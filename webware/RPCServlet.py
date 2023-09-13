@@ -82,10 +82,10 @@ class RPCServlet(HTTPServlet):
 
     def awake(self, transaction):
         """Begin transaction."""
-        HTTPServlet.awake(self, transaction)
+        super().awake(transaction)
         self._transaction = transaction
 
     def sleep(self, transaction):
         """End transaction."""
         self._transaction = None
-        HTTPServlet.sleep(self, transaction)
+        super().sleep(transaction)
