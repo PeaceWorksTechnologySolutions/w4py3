@@ -51,7 +51,7 @@ class HTTPRequest(Request):
                 # (workaround for https://bugs.python.org/issue1375011).
                 # noinspection PyTypeChecker
                 cookies = dict(cookie.split('=', 1) for cookie in reversed(
-                    self._environ['HTTP_COOKIE'].split('; ')))
+                    self._environ['HTTP_COOKIE'].split('; ')) if '=' in cookie)
                 # Protect the loading of cookies with an exception handler,
                 # because MSIE cookies sometimes can break the cookie module.
                 try:
