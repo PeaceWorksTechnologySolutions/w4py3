@@ -158,7 +158,7 @@ class HTTPRequest(Request):
 
     def isSecure(self):
         """Check whether this is a HTTPS connection."""
-        return self._environ.get('wsgi.url_scheme') == 'https'
+        return self._environ.get('wsgi.url_scheme') == 'https' or self._environ.get('HTTP_X_FORWARDED_PROTO', 'http') == 'https'
 
     # endregion Security
 
